@@ -24,6 +24,7 @@ def add():
 		u = Usuario(nome, email, senha, administrador)
 		db.session.add(u)
 		db.session.commit()
+		flash('Dados inseridos com sucesso')
 		return redirect(url_for('.get'))
 
 @bp_usuario.route('/update/<int:id>', methods=['GET', 'POST'])
@@ -86,5 +87,5 @@ def autenticar():
 		login_user(usuario)
 		return redirect(url_for('admin'))
 	else:
+		flash('Usuário ou senha inválidos')
 		return redirect(url_for('login'))
-	
